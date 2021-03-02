@@ -1,9 +1,11 @@
-import './App.css';
+import Navbar from './universalComps/Navbar';
+import Routes from './config/routes';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Fido's Hotel</h1>
+    <div>
+      <Navbar />
+      <div id="app"><Routes /></div>
     </div>
   );
 }
