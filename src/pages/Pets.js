@@ -4,7 +4,7 @@ import PetsList from '../components/pets/PetsList';
 
 class Pets extends React.Component {
   state = {
-    pets: [],
+    pets: []
   }
 
   componentDidMount() {

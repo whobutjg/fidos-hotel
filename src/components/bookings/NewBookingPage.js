@@ -3,11 +3,27 @@ import React from 'react';
 
 class NewBooking extends React.Component {
   state = {
-    petId: '',
+    pet: '',
     startDate: '',
     endDate: '',
+    pets: [],
   }
-
+  
+  componentDidMount() {
+    fetch('http://localhost:4000/api/v1/pets/')
+    .then((response) =>  {
+      return response.json()
+    })
+    .then((data) => {
+      this.setState({
+        pets: data
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+  
   bookingDateHandler = (event) => {
     this.setState({
       ...this.state,
@@ -15,15 +31,69 @@ class NewBooking extends React.Component {
     });
   }
 
-  bookingDateSubmit = (event) => {
-    event.preventDefault();
 
+
+  bookingDateSubmit = (event) => {
+    console.log('Booking submitted');
+    event.preventDefault();
+    const bookingObj = {
+      pet: this.state.pet,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
+    }
+    fetch('http://localhost:4000/api/v1/bookings/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bookingObj),
+    })
+    .then((result) => result.json())
+    .catch((err) => console.log(err));
+    this.props.history.push('/pets');
   }
 
+  handleChangePet = (event) => {
+    this.setState({
+     pet: event.target.value
+    });
+    console.log('Change', event.target.value)
+  }
+
+
   render() {
+    let petOptions = this.state.pets.map((pet) => {
+      return <option value={pet._id} key={pet._id}>{pet.name}</option>
+    });
+    petOptions = [(<option value={''} key={0}>Choose A Pet</option>),...petOptions]
     return (
-      <div>
+      <div className="newbooking-form">
         <h1>Bookings Page:</h1>
+        <select onChange={this.handleChangePet}>{petOptions}</select>
+      <form onSubmit={this.bookingDateSubmit}>
+      <div>
+            <label htmlFor="name">Start Date:</label>
+            <input 
+            className='rounded'
+            type="text" 
+            id="startDate" 
+            name="startDate"
+            onChange={this.bookingDateHandler}
+            required />
+          </div>
+          <div>
+            <label htmlFor="name">End Date:</label>
+            <input
+            className="rounded"
+            type="text" 
+            id="endDat" 
+            name="endDate"
+            onChange={this.bookingDateHandler}
+            required />
+          </div>
+          <br/>
+          <button className='bg-blue-600 rounded text-white' type="submit">Book Visit!</button>
+        </form>
       </div>
     );
   }

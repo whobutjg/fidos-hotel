@@ -30,47 +30,55 @@ class NewPet extends React.Component {
       body: JSON.stringify(petObj),
     })
     .then((result) => result.json())
-    .then((petData) => petData)
     .catch((err) => {
       console.log(err);
     });
+    this.props.history.push('/pets');
   }
 
   render() {
     return(
-      <div>
+      <>
+      <div className='newpet-form'>
         <h3>Add a Pet</h3>
         <form onSubmit={this.handleSubmitPet}>
           <div>
-            <label htmlFor="name">Name:</label>
-            <input 
+            <label htmlFor="name">Name: </label>
+            <input
+            className='rounded'
             type="text" 
             id="name" 
             name="name"
             onChange={this.newPetHandler}
             required />
           </div>
+          <br/>
           <div>
-            <label htmlFor="name">Breed:</label>
+            <label htmlFor="name">Breed: </label>
             <input 
+            className='rounded'
             type="text" 
             id="breed" 
             name="breed"
             onChange={this.newPetHandler}
             required />
           </div>
+          <br/>
           <div>
-            <label htmlFor="name">Size:</label>
+            <label htmlFor="name">Size: </label>
             <input 
+            className='rounded'
             type="text" 
             id="size" 
             name="size"
             onChange={this.newPetHandler}
             required />
           </div>
-          <button type="submit">Add Pet</button>
+          <br/>
+          <button className='bg-blue-600 border-black rounded text-white' type="submit">Add Pet</button>
         </form>
       </div>
+      </>
     );
   }
 }

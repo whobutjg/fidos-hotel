@@ -8,7 +8,10 @@ const bookingSchema = new mongoose.Schema(
     endDate: {
       type: Date
     },
-    userIdForPet: mongoose.Schema.ObjectId
+    pet: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Pet',
+    },
   }
 );
 

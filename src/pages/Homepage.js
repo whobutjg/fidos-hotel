@@ -1,6 +1,9 @@
 const Homepage = () => {
   return(
-    <h1>This is the Homepage</h1>
+    <div className='hero-section'>
+    <h1>Welcome to Fido's Hotel!</h1>
+    <h4>Does This Work Still?</h4>
+    </div>
   );
 }
 

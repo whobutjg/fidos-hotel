@@ -1,12 +1,26 @@
 const db = require('../models');
 
+// const index = (req, res) => {
+//   // Query DB for all pets
+//   db.Pet.find({}, (err, allPets) => {
+//     if (err) return console.log(err);
+//     return res.json(allPets);
+//   });
+// };
+
 const index = (req, res) => {
-  // Query DB for all pets
   db.Pet.find({}, (err, allPets) => {
-    if (err) return console.log(err);
-    return res.json(allPets);
+        if (err) return console.log(err);
+        return res.json(allPets);
+      })
+    .populate('bookings')
+    .exec((err, foundBookings) => {
+    if (err) {
+      console.log(err);
+      return res.json(foundBookings) 
+    }
   });
-};
+}
 
 const show = (req, res) => {
   // Query Pet from DB by ID

@@ -2,7 +2,7 @@ const db = require('../models');
 
 const index = (req, res) => {
   // Query DB for all bookings
-  db.Booking.find({}, (err, allBookings) => {
+  db.Booking.find({ petId: req.params.petId}, (err, allBookings) => {
     if (err) return console.log(err);
     return res.json(allBookings);
   });
@@ -10,7 +10,7 @@ const index = (req, res) => {
 
 const show = (req, res) => {
   // Query Booking from DB by ID
-  db.Booking.findOne({ _id: req.params.id }, (err, foundBooking) => {
+  db.Booking.findById(req.params.id, (err, foundBooking) => {
     if (err) return console.log(err);
     return res.json(foundBooking);
   });
@@ -18,9 +18,24 @@ const show = (req, res) => {
 
 const create = (req, res) => {
   // Query DB to create a new Booking
+  console.log("Pet Id = ", req.body);
   db.Booking.create(req.body, (err, newBooking) => {
     if(err) return console.log(err);
-    return res.json(newBooking);
+    db.Pet.findByIdAndUpdate(
+      req.body.pet,
+      {
+        $push: {
+          bookings: newBooking._id
+        }
+      },
+      {
+        new: true
+      },
+      ((err, updatedPet) => {
+        if(err) return console.log(err)
+        return res.json(newBooking);
+      })
+    );
   });
 };
 
