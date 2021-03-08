@@ -20,5 +20,6 @@ app.use(
 
 app.use('/api/v1/pets', routes.pets);
 app.use('/api/v1/bookings', routes.bookings);
+app.use('/api/v1/users', routes.users);
 
 app.listen(port, () => console.log(`Listening to port ${port}`));

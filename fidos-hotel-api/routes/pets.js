@@ -1,14 +1,16 @@
 const router = require('express').Router();
 const controllers = require('../controllers');
+const auth = require('../middleware/auth');
 
-router.get('/', controllers.pets.index);
+// CURRENT PATH = "/api/v1/pets"
+router.get('/', auth, controllers.pets.index);
 
-router.get('/:id', controllers.pets.show);
+router.get('/:id', auth, controllers.pets.show);
 
-router.post('/', controllers.pets.create);
+router.post('/', auth, controllers.pets.create);
 
-router.put('/:id', controllers.pets.update);
+router.put('/:id', auth, controllers.pets.update);
 
-router.put('/:id', controllers.pets.destroy);
+router.delete('/:id', auth, controllers.pets.destroy);
 
 module.exports = router;

@@ -14,31 +14,21 @@ class NewPet extends React.Component {
     });
   }
 
+
   handleSubmitPet = (event) => {
     console.log('Pet logged!');
     event.preventDefault();
-    const petObj = {
-      name: this.state.name,
-      breed: this.state.breed,
-      size: this.state.size
-    };
-    fetch('http://localhost:4000/api/v1/pets', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(petObj),
-    })
-    .then((result) => result.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    this.props.submitPetHandler(
+      this.state.name,
+      this.state.breed,
+      this.state.size
+      );
     this.props.history.push('/pets');
+    console.log(this.props);
   }
 
   render() {
     return(
-      <>
       <div className='newpet-form'>
         <h3>Add a Pet</h3>
         <form onSubmit={this.handleSubmitPet}>
@@ -54,7 +44,7 @@ class NewPet extends React.Component {
           </div>
           <br/>
           <div>
-            <label htmlFor="name">Breed: </label>
+            <label htmlFor="breed">Breed: </label>
             <input 
             className='rounded'
             type="text" 
@@ -65,7 +55,7 @@ class NewPet extends React.Component {
           </div>
           <br/>
           <div>
-            <label htmlFor="name">Size: </label>
+            <label htmlFor="size">Size: </label>
             <input 
             className='rounded'
             type="text" 
@@ -74,11 +64,9 @@ class NewPet extends React.Component {
             onChange={this.newPetHandler}
             required />
           </div>
-          <br/>
           <button className='bg-blue-600 border-black rounded text-white' type="submit">Add Pet</button>
         </form>
       </div>
-      </>
     );
   }
 }

@@ -4,7 +4,7 @@ export default function Footer() {
   return(
     <footer>
       <p>
-        &copy;2021 Fido's Hotel, LLC
+        2021, Fido's Hotel&copy;
       </p>
     </footer>
   );

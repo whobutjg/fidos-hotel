@@ -15,4 +15,5 @@ mongoose
 module.exports = {
   Pet: require('./Pet'),
   Booking: require('./Booking'),
+  User: require('./User')
 };

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const controllers = require('../controllers');
 
-router.get('/filter/:petId', controllers.bookings.index);
+router.get('/', controllers.bookings.index);
 
 router.get('/:id', controllers.bookings.show);
 

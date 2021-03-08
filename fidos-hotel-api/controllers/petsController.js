@@ -10,6 +10,7 @@ const db = require('../models');
 
 const index = (req, res) => {
   db.Pet.find({}, (err, allPets) => {
+    console.log(allPets);
         if (err) return console.log(err);
         return res.json(allPets);
       })
@@ -31,10 +32,25 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
+  req.body.userId = req.currentUser;
+  console.log('Created Pet - ', req.body);
   // Query DB to create a new Pet
   db.Pet.create(req.body, (err, newPet) => {
     if(err) return console.log(err);
-    return res.json(newPet);
+    db.User.findByIdAndUpdate(
+      req.body.userId, {
+        $push: {
+          pets: newPet._id 
+        }
+      }, 
+      {
+        new: true
+      },
+      ((err, updatedUser) => {
+        if (err) return console.log(err)
+        return res.json(newPet);
+      })
+    );
   });
 };
 

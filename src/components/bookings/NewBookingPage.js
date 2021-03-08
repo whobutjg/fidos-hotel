@@ -6,23 +6,23 @@ class NewBooking extends React.Component {
     pet: '',
     startDate: '',
     endDate: '',
-    pets: [],
+    // pets: [],
   }
   
-  componentDidMount() {
-    fetch('http://localhost:4000/api/v1/pets/')
-    .then((response) =>  {
-      return response.json()
-    })
-    .then((data) => {
-      this.setState({
-        pets: data
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }
+  // componentDidMount() {
+  //   fetch('http://localhost:4000/api/v1/pets/')
+  //   .then((response) =>  {
+  //     return response.json()
+  //   })
+  //   .then((data) => {
+  //     this.setState({
+  //       pets: data
+  //     })
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  // }
   
   bookingDateHandler = (event) => {
     this.setState({
@@ -31,25 +31,14 @@ class NewBooking extends React.Component {
     });
   }
 
-
-
   bookingDateSubmit = (event) => {
     console.log('Booking submitted');
     event.preventDefault();
-    const bookingObj = {
-      pet: this.state.pet,
-      startDate: this.state.startDate,
-      endDate: this.state.endDate
-    }
-    fetch('http://localhost:4000/api/v1/bookings/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(bookingObj),
-    })
-    .then((result) => result.json())
-    .catch((err) => console.log(err));
+    this.props.submitBookingHandler(
+      this.state.pet,
+      this.state.startDate,
+      this.state.endDate
+    );
     this.props.history.push('/pets');
   }
 
@@ -62,7 +51,7 @@ class NewBooking extends React.Component {
 
 
   render() {
-    let petOptions = this.state.pets.map((pet) => {
+    let petOptions = this.props.pets.map((pet) => {
       return <option value={pet._id} key={pet._id}>{pet.name}</option>
     });
     petOptions = [(<option value={''} key={0}>Choose A Pet</option>),...petOptions]

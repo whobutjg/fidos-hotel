@@ -18,6 +18,10 @@ const petSchema = new mongoose.Schema(
     type: {
       type: String
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
     breed: {
       type: String
     },

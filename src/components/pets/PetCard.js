@@ -1,15 +1,14 @@
 import BookingList from '../bookings/BookingList';
 const PetCard = (props) => {
-  console.log('This is the pet card - ', props);
   return (
     <>
-      <div className='border-gray-900'>
+      <div className="post-card bg-gray-300 border-black border-2 p-2 m-1.5 flex flex-col">
         <h1>{props.pet.name}</h1>
         <p>Breed: {props.pet.breed}</p>
         <p>Size: {props.pet.size}</p>
       </div>
       <div>
-        <BookingList bookings={props.pet.bookings} />
+        <BookingList bookings={props.pet.bookings} updatePets={props.updatePets}/>
       </div>
     </>
   );

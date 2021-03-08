@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.homepage {
+  position: fixed;
+  background-image: url('./images/doghotel.jpg');
+  background-position: center;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.70;
+}
+
+.main-section {
+  text-align: center;
+  margin-top: 295px;
+}
+
 .newpet-form {
   background-color: lightgray;
   width: 250px;
@@ -26,12 +46,15 @@
   margin-top: 100px;
 }
 
-.hero-section {
-  margin: 0 auto;
-  text-align: center;
-  width: 100vw;
-  height: 300px;
-  background: lightgray;
-  border-radius: 1em;
-  border: 2px solid black;
+
+
+.post-card {
+  border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  -moz-border-radius: 1.5em;
+  -ms-border-radius: 1.5em;
+  -o-border-radius: 1.5em;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
