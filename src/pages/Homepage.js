@@ -1,11 +1,14 @@
 // import Footer from '../universalComps/Footer';
 import appLogo from "../images/appstorelogo.png";
 import fbLogo from "../images/fblogo2.png";
+import { Redirect } from 'react-router-dom';
 
 
-const Homepage = () => {
+const Homepage = (props) => {
+  let redirect = props.loggedIn ? <Redirect to='/pets' /> : null;
   return (
     <>
+    {redirect}
     <div className="homepage">
       <div className="main-section">
         <h1 className="text-white text-7xl font-bold font-weight-800">

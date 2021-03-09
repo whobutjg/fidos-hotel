@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 
-function ProfilePage() {
+function ProfilePage(props) {
+  let redirect = props.loggedIn ? null : <Redirect to='/' />;
   const [profile, setProfile] = useState({});
  
   useEffect(() => {
@@ -28,10 +30,13 @@ function ProfilePage() {
   }, [])
 
   return (
+    <>
+    {redirect}
     <div>
       <h2>Profile Page</h2>
       <p><strong>Name: </strong>{profile.name}</p>
     </div>
+    </>
   );
 }
 

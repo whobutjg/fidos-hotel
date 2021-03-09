@@ -2,7 +2,20 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function Navbar(props) {
-
+  let loginLogoutButton;
+if (props.loggedIn) {
+  loginLogoutButton = (
+  <button onClick={(event) => props.logoutHandler(event)} 
+    className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
+    Logout
+  </button>)
+} else {
+  loginLogoutButton = (
+    <button onClick={() => props.showLoginModal()} 
+      className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
+      Login
+    </button>)
+}
 
   return (
     <header>
@@ -15,27 +28,22 @@ export default function Navbar(props) {
             </NavLink>
           </div>
           <div>
-            <NavLink to="/pets" className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
+            {(props.loggedIn) ? <NavLink to="/pets" className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
               Pets
-            </NavLink>
+            </NavLink> : null}
           </div>
           <div>
-            <NavLink to="/newpet" className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
+            {(props.loggedIn) ? <NavLink to="/newpet" className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
               New Pet
-            </NavLink>
+            </NavLink> : null}
           </div>
           <div>
-            <NavLink to='/newbooking' className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>
-              Bookings
-            </NavLink>
-
             {(props.loggedIn) ? <NavLink to='/profile' className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>Profile</NavLink>: 
-            <NavLink to='/login' className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>Login</NavLink> && 
             <NavLink to='/signup' className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>Sign-Up With Email</NavLink>}   
           </div>
 
           <div>
-            <button onClick={(event) => props.loggedOut(event)} className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'>Logout</button>
+            {loginLogoutButton}
           </div>
 
         </div>

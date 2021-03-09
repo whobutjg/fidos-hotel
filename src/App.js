@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./universalComps/Navbar";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import PetPage from "./components/pets/NewPetPage";
 import BookingPage from "./components/bookings/NewBookingPage";
@@ -24,32 +24,14 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    let localToken = localStorage.getItem('token')
     this.setState({
-      token: localToken,
+      token: localStorage.getItem('token'),
       isTokenValid: true
+    }, () => {
+      if (this.state.token) {
+        this.getAllPets();
+      } 
     })
-    if (localToken) {
-      fetch('http://localhost:4000/api/v1/pets/', {
-        headers: {
-          'Content-Type': 'application/json',
-          'auth': localToken
-        }
-      })
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        console.log(data)
-        this.setState({
-          ...this.state,
-          pets: data
-        })
-      })
-      .catch((err) => console.log(err));
-    } else {
-      console.error('No Pets');
-    }
   }
 
   submitPetHandler = (name, breed, size) => {
@@ -137,6 +119,10 @@ class App extends React.Component {
   setToken = (newToken) => {
     this.setState({
       token: newToken
+    }, () => {
+      if (this.state.token) {
+        this.getAllPets();
+      } 
     });
   }
 
@@ -171,10 +157,32 @@ class App extends React.Component {
   }
 
 
+  getAllPets() {
+    fetch('http://localhost:4000/api/v1/pets/', {
+      headers: {
+        'Content-Type': 'application/json',
+        'auth': this.state.token
+      }
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          ...this.state,
+          pets: data
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
   render() {
     return (
     <>
-    <Modal display={this.state.displayLoginModal} closeHandler={() => this.loginModalShow(false)}></Modal>
+    <Modal display={this.state.displayLoginModal} closeHandler={() => this.loginModalShow(false)}>
+      <Login setToken={this.setToken} loginModalShow={(newState) => this.loginModalShow(newState)}/>
+    </Modal>
     <Modal display={this.state.displaySignupModal} closeHandler={() => this.signupModalShow(false)}></Modal>
     <Modal display={this.state.displayBookingsModal} closeHandler={() => this.bookingsModalShow(false)}>
       <BookingPage 
@@ -185,17 +193,15 @@ class App extends React.Component {
         />
     </Modal>
       <div>
-        <Navbar loggedIn={this.isLoggedIn()} loggedOut={this.logoutHandler} />
+        <Navbar loggedIn={this.isLoggedIn()} logoutHandler={this.logoutHandler} showLoginModal={() => this.loginModalShow(true)}/>
         <div id="app">
           <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route path="/pets" loggedIn={this.isLoggedIn()} component={() => <Pets updatePets={this.updatePets} pets={this.state.pets} bookingsModalShow={(newState) => this.bookingsModalShow(newState)} />}/>
-            <Route path="/newpet" loggedIn={this.isLoggedIn()} component={(props) => <PetPage submitPetHandler={this.submitPetHandler} {...props} />} />
-            <Route path='/editbooking/:id' loggedIn={this.isLoggedIn()} component={(props) => <EditBookingPage token={this.state.token}  updatePets={this.updatePets} {...props} />} />
-            <Route path='/login' component={() => <Login setToken={this.setToken} />} />
-            {this.state.token || !this.state.isTokenValid ? <Route path='/profile' component={ProfilePage} /> : <Redirect to='/login'/>}
+            <Route exact path="/" component={(props) => <Homepage loggedIn={this.isLoggedIn()} {...props} /> }/>
+            <Route path="/pets"  component={() => <Pets loggedIn={this.isLoggedIn()} updatePets={this.updatePets} pets={this.state.pets} bookingsModalShow={(newState) => this.bookingsModalShow(newState)} />}/>
+            <Route path="/newpet"  component={(props) => <PetPage loggedIn={this.isLoggedIn()} submitPetHandler={this.submitPetHandler} {...props} />} />
+            <Route path='/editbooking/:id'  component={(props) => <EditBookingPage loggedIn={this.isLoggedIn()} token={this.state.token}  updatePets={this.updatePets} {...props} />} />
             <Route path="/signup" component={Signup} />
-            <Route path='/logout' component={Homepage} />
+            <Route path='/profile' component={(props) => <ProfilePage loggedIn={this.isLoggedIn()} {...props} /> }/>
           </Switch>
         </div>
       </div>

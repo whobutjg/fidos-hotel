@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 class NewPet extends React.Component {
   state = {
@@ -28,7 +29,10 @@ class NewPet extends React.Component {
   }
 
   render() {
+    let redirect = this.props.loggedIn ? null : <Redirect to='/' />;
     return(
+      <>
+      {redirect}
       <div className='newpet-form'>
         <h3>Add a Pet</h3>
         <form onSubmit={this.handleSubmitPet}>
@@ -67,6 +71,7 @@ class NewPet extends React.Component {
           <button className='bg-blue-600 border-black rounded text-white' type="submit">Add Pet</button>
         </form>
       </div>
+      </>
     );
   }
 }

@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import { useHistory} from 'react-router-dom';
 
-function Login({ setToken }){
-  const history = useHistory();
+function Login( props ){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
@@ -32,11 +30,14 @@ function Login({ setToken }){
         return setError(response.statusText);
       })
       .then((data) => {
+        setEmail('')
+        setPassword('')
+        setPassword2('')
         console.log(data);
-        setToken(data.token)
+        props.setToken(data.token)
         localStorage.setItem("token", data.token);
-        if(this.props.loginModalShow) {
-          this.props.loginModalShow(false)
+        if(props.loginModalShow) {
+          props.loginModalShow(false)
         }
       })
       .catch((err) => setError(err));
