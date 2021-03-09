@@ -16,30 +16,34 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 0.7;
 }
 
 .main-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 295px;
-  opacity: unset;
 }
 
 .logos {
-  flex-direction: row ;
+  padding: 0;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  align-content: center;
+  opacity: 0.7;
 }
 
 .apple-logo {
-  width: 250px;
-  height: 250px;
+  padding: 0;
+  width: 200px;
+  height: 260px;
 }
 
 .fb-logo {
+  padding-top: 1.5em;
   width: 300px;
   height: 300px;
+  padding-left: 20px;
 }
 
 .newpet-form {
@@ -55,7 +59,7 @@ body {
 }
 
 .newbooking-form {
-  background-color: lightgray;
+  background-color: rgba(0,0,0, 0.3);
   width: 250px;
   height: 250px;
   border-radius: 0.5em;
@@ -64,6 +68,18 @@ body {
   padding: 10px;
   text-align: center;
   margin-top: 100px;
+  color: white;
+}
+
+input {
+  color: black;
+}
+
+#booking-button {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1em;
+  color: white;
+  border: 1px solid white;
 }
 
 .post-card {
@@ -81,14 +97,19 @@ body {
 }
 
 .modal {
-  top: 10%;
-  left: 10%;
+  background-image: url('./images//couchdog.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 30%;
+  left: 20%;
   position: fixed;
   z-index: 9999;
-  width: 80%;
-  height: 80%;
+  width: 60%;
+  height: 40%;
   margin: auto;
   background-color: white;
+  border-radius: 1em;
 }
 
 .modal-background {
@@ -104,4 +125,54 @@ body {
   display: none;
 }
 
+.home-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  position: relative;
+}
 
+.pet-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(206, 189, 143, 0.9);
+  color: white;
+  width: 90%;
+  height: 40%;
+  border: black 2px solid;
+  border-radius: 1em;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 15px;
+  padding: 1em;
+  margin-bottom: 5px;
+  box-shadow: lightgrey 2px 2px 2px;
+}
+
+.pets-page {
+  padding: 2em;
+  background: rgb(70,161,153);
+  background: linear-gradient(158deg, rgba(70,161,153,1) 0%, rgba(147,164,170,1) 19%, rgba(81,81,162,1) 39%, rgba(32,110,126,1) 69%, rgba(69,134,147,1) 91%);
+  height: 100vh;
+}
+
+.booking-card {
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 2px;
+  margin: 2px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+#bookings-list {
+  background-image: url('./images/funnydog.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
