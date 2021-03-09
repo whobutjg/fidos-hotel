@@ -6,6 +6,7 @@ const PetCard = (props) => {
         <h1>{props.pet.name}</h1>
         <p>Breed: {props.pet.breed}</p>
         <p>Size: {props.pet.size}</p>
+        <button onClick={() => props.bookingsModalShow(true)}>Add Booking</button>
       </div>
       <div>
         <BookingList bookings={props.pet.bookings} updatePets={props.updatePets}/>

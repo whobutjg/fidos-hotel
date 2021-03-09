@@ -6,23 +6,7 @@ class NewBooking extends React.Component {
     pet: '',
     startDate: '',
     endDate: '',
-    // pets: [],
   }
-  
-  // componentDidMount() {
-  //   fetch('http://localhost:4000/api/v1/pets/')
-  //   .then((response) =>  {
-  //     return response.json()
-  //   })
-  //   .then((data) => {
-  //     this.setState({
-  //       pets: data
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // }
   
   bookingDateHandler = (event) => {
     this.setState({
@@ -39,7 +23,14 @@ class NewBooking extends React.Component {
       this.state.startDate,
       this.state.endDate
     );
-    this.props.history.push('/pets');
+    if (this.props.bookingsModalShow) {
+      this.props.bookingsModalShow(false)
+    }
+    this.setState({
+      pet: '',
+      startDate: '',
+      endDate: '',
+    });
   }
 
   handleChangePet = (event) => {

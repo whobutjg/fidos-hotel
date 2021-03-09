@@ -6,7 +6,6 @@ function ProfilePage() {
  
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log(token);
     if(token) {
       fetch('http://localhost:4000/api/v1/users/profile', {
         method: 'POST',

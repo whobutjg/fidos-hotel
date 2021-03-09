@@ -35,10 +35,13 @@ function Login({ setToken }){
         console.log(data);
         setToken(data.token)
         localStorage.setItem("token", data.token);
-        history.push("/profile");
+        if(this.props.loginModalShow) {
+          this.props.loginModalShow(false)
+        }
       })
       .catch((err) => setError(err));
   }
+
   return (
     <div className="newpet-form">
       <h2 className='text-center'>Login</h2>

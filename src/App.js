@@ -9,13 +9,17 @@ import Pets from "./pages/Pets";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ProfilePage from './pages/Profile';
+import Modal from "./universalComps/Modal";
 
 
 class App extends React.Component {
   state = {
     pets: [],
     token: null,
-    isTokenValid: false
+    isTokenValid: false,
+    displayLoginModal: false,
+    displaySignupModal: false,
+    displayBookingsModal: false
   }
 
 
@@ -136,29 +140,66 @@ class App extends React.Component {
     });
   }
 
+  logoutHandler = (event) => {
+    console.log('logoutHandler - ');
+    event.preventDefault();
+    localStorage.removeItem('token');
+    this.setState({
+      token: null
+    });
+  }
+
   isLoggedIn = () => (this.state.token ? true : false);
+
+  loginModalShow = (newState) => {
+    this.setState({
+      ...this.state,
+      displayLoginModal: newState
+    });
+  }
+  signupModalShow = (newState) => {
+    this.setState({
+      ...this.state,
+      displaySignupModal: newState
+    });
+  }
+  bookingsModalShow = (newState) => {
+    this.setState({
+      ...this.state,
+      displayBookingsModal: newState
+    });
+  }
 
 
   render() {
-    console.log("token - ", this.state.token);
-    console.log("cuck - ", this.state.isTokenValid);
     return (
+    <>
+    <Modal display={this.state.displayLoginModal} closeHandler={() => this.loginModalShow(false)}></Modal>
+    <Modal display={this.state.displaySignupModal} closeHandler={() => this.signupModalShow(false)}></Modal>
+    <Modal display={this.state.displayBookingsModal} closeHandler={() => this.bookingsModalShow(false)}>
+      <BookingPage 
+        pets={this.state.pets} 
+        token={this.state.token} 
+        submitBookingHandler={this.submitBookingHandler} 
+        bookingsModalShow={(newState) => this.bookingsModalShow(newState)}
+        />
+    </Modal>
       <div>
-        <Navbar loggedIn={this.isLoggedIn()}/>
+        <Navbar loggedIn={this.isLoggedIn()} loggedOut={this.logoutHandler} />
         <div id="app">
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route path="/pets" loggedIn={this.isLoggedIn()} component={() => <Pets updatePets={this.updatePets} pets={this.state.pets} />}/>
+            <Route path="/pets" loggedIn={this.isLoggedIn()} component={() => <Pets updatePets={this.updatePets} pets={this.state.pets} bookingsModalShow={(newState) => this.bookingsModalShow(newState)} />}/>
             <Route path="/newpet" loggedIn={this.isLoggedIn()} component={(props) => <PetPage submitPetHandler={this.submitPetHandler} {...props} />} />
-            <Route path="/newbooking" loggedIn={this.isLoggedIn()} component={(props) => <BookingPage pets={this.state.pets} token={this.state.token} submitBookingHandler={this.submitBookingHandler} {...props} />} />
             <Route path='/editbooking/:id' loggedIn={this.isLoggedIn()} component={(props) => <EditBookingPage token={this.state.token}  updatePets={this.updatePets} {...props} />} />
             <Route path='/login' component={() => <Login setToken={this.setToken} />} />
-            {this.state.token || !this.state.isTokenValid ? <Route path='/profile' component={ProfilePage} /> : <Redirect to='login'/>}
+            {this.state.token || !this.state.isTokenValid ? <Route path='/profile' component={ProfilePage} /> : <Redirect to='/login'/>}
             <Route path="/signup" component={Signup} />
+            <Route path='/logout' component={Homepage} />
           </Switch>
-          {/* <Routes routes={this.state.props}/> */}
         </div>
       </div>
+    </>
     );
   }
 }
