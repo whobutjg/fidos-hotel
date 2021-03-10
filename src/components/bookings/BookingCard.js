@@ -15,10 +15,6 @@ const BookingCard = (props) => {
       .catch((err) => console.log(err));
   };
 
-  let storedDate = Date.parse(props.booking.startDate);
-  storedDate.toDateString();
-  console.log(storedDate);
-
   return (
     <div className='booking-card'>
       <h4 className='text-blue-100'>Booked for the following days of:</h4>

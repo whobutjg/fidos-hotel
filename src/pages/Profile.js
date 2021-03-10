@@ -1,41 +1,43 @@
 import { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-
 function ProfilePage(props) {
   let redirect = props.loggedIn ? null : <Redirect to='/' />;
   const [profile, setProfile] = useState({});
- 
+
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if(token) {
+    if (token) {
       fetch('http://localhost:4000/api/v1/users/profile', {
         method: 'POST',
         headers: {
-          'Content-Type' : 'application/JSON',
-          'auth': token
-        }
+          'Content-Type': 'application/JSON',
+          auth: token,
+        },
       })
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        }
-      }) 
-      .then((data) => {
-        console.log(data);
-        setProfile(data.profile)
-      })
-      .catch((err) => console.log(err))
+        .then((response) => {
+          if (response.status === 200) {
+            return response.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          setProfile(data.profile);
+        })
+        .catch((err) => console.log(err));
     }
-  }, [])
+  }, []);
 
   return (
     <>
-    {redirect}
-    <div>
-      <h2>Profile Page</h2>
-      <p><strong>Name: </strong>{profile.name}</p>
-    </div>
+      {redirect}
+      <div className='profile-container'>
+        <h2>Profile Page</h2>
+        <p>
+          <strong>Name: </strong>
+          {profile.name}
+        </p>
+      </div>
     </>
   );
 }

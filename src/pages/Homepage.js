@@ -1,7 +1,7 @@
 // import Footer from '../universalComps/Footer';
 import appLogo from '../images/appstorelogo.png';
 import fbLogo from '../images/fblogo2.png';
-// import { Redirect } from 'react-router-dom';
+import puppyGang from '../images/puppygang.png';
 
 const Homepage = (props) => {
   // let redirect = props.loggedIn ? null : <Redirect to='/pets' />;
@@ -27,7 +27,12 @@ const Homepage = (props) => {
               <img src={fbLogo} alt='facebooklogo' />
             </div>
           </div>
-          <div className='footer'>{/* <Footer /> */}</div>
+          <div className='fidos-partners'>
+            <p className='text-2xl text-white font-bold' id='fido-partners'>
+              FIDO'S HOTEL PARTNERS
+              <img src={puppyGang} alt='puppygang' id='puppygangpic' />
+            </p>
+          </div>
         </div>
       </div>
     </>

@@ -7,18 +7,18 @@ export default function Navbar(props) {
     loginLogoutButton = (
       <button
         onClick={(event) => props.logoutHandler(event)}
-        className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'
+        className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
       >
-        Logout
+        LOGOUT
       </button>
     );
   } else {
     loginLogoutButton = (
       <button
         onClick={() => props.showLoginModal()}
-        className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'
+        className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
       >
-        Login
+        SIGN-IN
       </button>
     );
   }
@@ -31,18 +31,18 @@ export default function Navbar(props) {
             <NavLink
               exact
               to='/'
-              className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-lg font-medium'
+              className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-lg font-medium'
             >
-              About
+              ABOUT
             </NavLink>
           </div>
           <div>
             {props.loggedIn ? (
               <NavLink
                 to='/pets'
-                className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'
+                className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
               >
-                Pets
+                PETS
               </NavLink>
             ) : null}
           </div>
@@ -50,9 +50,9 @@ export default function Navbar(props) {
             {props.loggedIn ? (
               <NavLink
                 to='/newpet'
-                className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'
+                className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
               >
-                New Pet
+                NEW PET
               </NavLink>
             ) : null}
           </div>
@@ -60,16 +60,16 @@ export default function Navbar(props) {
             {props.loggedIn ? (
               <NavLink
                 to='/profile'
-                className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'
+                className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
               >
-                Profile
+                PROFILE
               </NavLink>
             ) : (
               <NavLink
                 to='/signup'
-                className='text-white hover:bg-white hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium'
+                className='text-white hover:bg-yellow-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
               >
-                Sign-Up With Email
+                SIGN-UP WITH EMAIL
               </NavLink>
             )}
           </div>

@@ -46,52 +46,54 @@ function Login(props) {
   }
 
   return (
-    <div className='newbooking-form'>
-      <h2 className='text-center'>Login</h2>
-      {error && <h2>{error}</h2>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Email </label>
-          <input
-            type='email'
-            id='email'
-            name='email'
-            placeholder='Ex: jdoe@gmail.com'
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password </label>
-          <input
-            type='password'
-            id='password'
-            name='password'
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor='name'>Confirm Password </label>
-          <input
-            type='password'
-            id='password2'
-            name='password2'
-            value={password2}
-            onChange={(event) => setPassword2(event.target.value)}
-          />
-        </div>
-        <div className='text-center'>
-          <button
-            id='booking-button'
-            type='submit'
-            className='bg-blue-600 rounded text-white'
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
+    <>
+      <div className='login-form'>
+        <h2 className='text-center'>SIGN-IN</h2>
+        {error && <h2>{error}</h2>}
+        <form onSubmit={handleSubmit}>
+          <div className='p-2'>
+            <label htmlFor='email'>Email: </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              placeholder='Ex: sdoe@gmail.com'
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </div>
+          <div className='p-2'>
+            <label htmlFor='password'>Password: </label>
+            <input
+              type='password'
+              id='password'
+              name='password'
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div className='p-2'>
+            <label htmlFor='name'>Confirm Password: </label>
+            <input
+              type='password'
+              id='password2'
+              name='password2'
+              value={password2}
+              onChange={(event) => setPassword2(event.target.value)}
+            />
+          </div>
+          <div className='text-center'>
+            <button
+              id='booking-button'
+              type='submit'
+              className='bg-blue-600 rounded text-white'
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 

@@ -60,18 +60,22 @@ body {
 
 .newbooking-form {
   background-color: rgba(0,0,0, 0.3);
-  width: 250px;
-  height: 250px;
+  width: 75%;
+  height: 80%;
   border-radius: 0.5em;
-  margin: 0 auto;
+  margin: 20px auto;
   border: 2px black;
   padding: 10px;
   text-align: center;
-  margin-top: 100px;
   color: white;
+  box-sizing: border-box;
 }
 
 input {
+  color: black !important;
+}
+
+select {
   color: black;
 }
 
@@ -105,8 +109,8 @@ input {
   left: 20%;
   position: fixed;
   z-index: 9999;
-  width: 60%;
-  height: 40%;
+  width: 60vw;
+  height: 50vh;
   margin: auto;
   background-color: white;
   border-radius: 1em;
@@ -138,7 +142,7 @@ input {
 .pet-card {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(206, 189, 143, 0.9);
+  background-color: rgba(71, 96, 112, 0.7);
   color: white;
   width: 90%;
   height: 40%;
@@ -149,7 +153,7 @@ input {
   margin-left: 15px;
   padding: 1em;
   margin-bottom: 5px;
-  box-shadow: lightgrey 2px 2px 2px;
+  box-shadow: lightgrey 1px 1px 1px;
 }
 
 .pets-page {
@@ -162,7 +166,7 @@ input {
 .booking-card {
   border: 1px solid black;
   border-radius: 1em;
-  padding: 2px;
+  padding: 4px;
   margin: 2px;
   background-color: rgba(0, 0, 0, 0.6);
 }
@@ -175,4 +179,61 @@ input {
   display: flex;
   flex-direction: column;
   overflow: scroll;
+}
+
+.fidos-partners {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-top: 450px;
+}
+
+#puppygangpic {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin-left: 45px;
+}
+
+.login-form {
+  background-color: rgba(0,0,0, 0.3);
+  width: 70%;
+  height: 70%;
+  margin: 60px auto;
+  border-radius: 0.5em;
+  border: 2px black;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.profile-container {
+  background-image: url()
+}
+
+
+.editbooking-page {
+  position: fixed;
+  background-image: url('./images/doxie.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.edit-booking {
+  background-color: rgba(0,0,0, 0.3);
+  width: 60%;
+  height: 40%;
+  border-radius: 0.5em;
+  margin: 20px auto;
+  border: 2px black;
+  padding: 10px;
+  text-align: center;
+  color: white;
 }

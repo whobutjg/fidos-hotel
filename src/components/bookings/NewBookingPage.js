@@ -1,4 +1,5 @@
 import React from 'react';
+import DatePicker from 'react-datetime';
 
 class NewBooking extends React.Component {
   state = {
@@ -7,10 +8,16 @@ class NewBooking extends React.Component {
     endDate: '',
   };
 
-  bookingDateHandler = (event) => {
+  bookingStartHandler = (date) => {
     this.setState({
       ...this.state,
-      [event.target.name]: event.target.value,
+      startDate: date,
+    });
+  };
+  bookingEndHandler = (date) => {
+    this.setState({
+      ...this.state,
+      endDate: date,
     });
   };
 
@@ -58,29 +65,30 @@ class NewBooking extends React.Component {
         <h1>Bookings Page:</h1>
         <select onChange={this.handleChangePet}>{petOptions}</select>
         <form onSubmit={this.bookingDateSubmit}>
-          <div>
-            <label htmlFor='name'>Start Date:</label>
-            <input
-              className='rounded'
-              type='text'
-              id='startDate'
-              name='startDate'
-              onChange={this.bookingDateHandler}
-              required
-            />
+          <div className='flex justify-between'>
+            <div>
+              <label htmlFor='name'>Start Date:</label>
+              <DatePicker
+                className='rounded'
+                id='startDate'
+                dateFormat='MM/DD/YYYY'
+                selected={this.startDate}
+                onChange={this.bookingStartHandler}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='name'>End Date:</label>
+              <DatePicker
+                className='rounded'
+                id='endDate'
+                dateFormat='MM/DD/YYYY'
+                selected={this.endDate}
+                onChange={this.bookingEndHandler}
+                required
+              />
+            </div>
           </div>
-          <div>
-            <label htmlFor='name'>End Date:</label>
-            <input
-              className='rounded'
-              type='text'
-              id='endDat'
-              name='endDate'
-              onChange={this.bookingDateHandler}
-              required
-            />
-          </div>
-          <br />
           <button
             id='booking-button'
             className='bg-blue-600 rounded text-white'
