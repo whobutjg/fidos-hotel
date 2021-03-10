@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { EmailShareButton, EmailIcon } from 'react-share';
 
 const BookingCard = (props) => {
   const deleteBooking = () => {
@@ -33,6 +34,12 @@ const BookingCard = (props) => {
             Edit Booking
           </button>
         </Link>
+        <EmailShareButton
+          subject={'Booking Appointment!'}
+          body={`Oscar is booked for the following days of ${props.booking.startDate} to ${props.booking.endDate}`}
+        >
+          <EmailIcon />
+        </EmailShareButton>
       </div>
     </div>
   );

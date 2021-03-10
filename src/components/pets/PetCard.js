@@ -49,6 +49,7 @@ const PetCard = (props) => {
           <BookingList
             bookings={props.pet.bookings}
             updatePets={props.updatePets}
+            pets={props.pet}
           />
         </div>
       </div>

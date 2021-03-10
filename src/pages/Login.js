@@ -86,7 +86,7 @@ function Login(props) {
             <button
               id='booking-button'
               type='submit'
-              className='bg-blue-600 rounded text-white'
+              className='bg-blue-700 text-white  hover:bg-blue-900 p-2 border rounded-md'
             >
               Submit
             </button>

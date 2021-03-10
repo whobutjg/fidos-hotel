@@ -101,7 +101,7 @@ select {
 }
 
 .modal {
-  background-image: url('./images//couchdog.jpg');
+  background-image: url('./images/couchdog.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -159,7 +159,7 @@ select {
 .pets-page {
   padding: 2em;
   background: rgb(227,230,231);
-background: linear-gradient(158deg, rgba(227,230,231,1) 9%, rgba(204,219,226,1) 42%, rgba(245,243,243,1) 81%);
+  background: linear-gradient(158deg, rgba(227,230,231,1) 9%, rgba(204,219,226,1) 42%, rgba(245,243,243,1) 81%);
   height: 100vh;
 }
 
@@ -208,11 +208,11 @@ background: linear-gradient(158deg, rgba(227,230,231,1) 9%, rgba(204,219,226,1) 
   border: 2px black;
   padding: 10px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   color: white;
-  display: block;
 }
 
-.login-form l
 
 .profile-container {
   background-image: url()
@@ -289,4 +289,11 @@ background: linear-gradient(158deg, rgba(227,230,231,1) 9%, rgba(204,219,226,1) 
 
 textarea {
   color: black;
+}
+
+.profile-container {
+  border: black 2px solid;
+  width: 40%;
+  height: 60%;
+  background-image: url('')
 }
