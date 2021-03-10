@@ -11,6 +11,6 @@ router.post('/', auth, controllers.pets.create);
 
 router.put('/:id', auth, controllers.pets.update);
 
-router.delete('/:id', auth, controllers.pets.destroy);
+router.delete('/:id', controllers.pets.destroy);
 
 module.exports = router;

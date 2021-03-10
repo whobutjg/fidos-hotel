@@ -2,12 +2,17 @@ import BookingList from '../bookings/BookingList';
 import dogLogo from '../../images/oscar.jpg';
 
 const PetCard = (props) => {
+  const token = {
+    token: localStorage.getItem('token'),
+  };
   const deletePet = () => {
+    console.log(props);
     fetch(`http://localhost:4000/api/v1/pets/${props.pet._id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(token),
     })
       .then((response) => response.json())
       .then(() => {

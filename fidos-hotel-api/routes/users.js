@@ -9,7 +9,7 @@ router.post('/verify', auth, controllers.users.verify);
 
 router.post('/profile', auth, controllers.users.show);
 
-router.post('/',  controllers.users.create);
+router.post('/', controllers.users.create);
 
 router.put('/:id', auth, controllers.users.update);
 
