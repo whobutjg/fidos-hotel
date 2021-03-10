@@ -24,12 +24,12 @@ const BookingCard = (props) => {
       <div className='flex flex-row justify-evenly w-1/2'>
         <button
           onClick={() => deleteBooking()}
-          className='btn-danger bg-red-600 hover:bg-red-900 text-white p-2 border rounded-md'
+          className='btn-danger bg-red-600 hover:bg-red-900 text-white p-2 border rounded-md bg-opacity-60'
         >
           Delete Booking
         </button>
         <Link to={`/editbooking/${props.booking._id}`}>
-          <button className='bg-blue-700 text-white  hover:bg-blue-900 p-2 border rounded-md'>
+          <button className='bg-gray-500 border border-white rounded-md p-2 hover:bg-gray-800 bg-opacity-60'>
             Edit Booking
           </button>
         </Link>

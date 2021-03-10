@@ -142,7 +142,7 @@ select {
 .pet-card {
   display: flex;
   justify-content: space-between;
-  background-color: rgba(71, 96, 112, 0.7);
+  background-color: rgba(70, 109, 131, 0.3);
   color: white;
   width: 90%;
   height: 40%;
@@ -158,13 +158,13 @@ select {
 
 .pets-page {
   padding: 2em;
-  background: rgb(70,161,153);
-  background: linear-gradient(158deg, rgba(70,161,153,1) 0%, rgba(147,164,170,1) 19%, rgba(81,81,162,1) 39%, rgba(32,110,126,1) 69%, rgba(69,134,147,1) 91%);
+  background: rgb(227,230,231);
+background: linear-gradient(158deg, rgba(227,230,231,1) 9%, rgba(204,219,226,1) 42%, rgba(245,243,243,1) 81%);
   height: 100vh;
 }
 
 .booking-card {
-  border: 1px solid black;
+  border: 1px solid black;  
   border-radius: 1em;
   padding: 4px;
   margin: 2px;
@@ -209,7 +209,10 @@ select {
   padding: 10px;
   text-align: center;
   color: white;
+  display: block;
 }
+
+.login-form l
 
 .profile-container {
   background-image: url()
@@ -236,4 +239,54 @@ select {
   padding: 10px;
   text-align: center;
   color: white;
+}
+
+.sign-up-page {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('./images/husky.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+}
+
+.sign-up-form {
+  background-color: rgba(0,0,0, 0.3);
+  width: 60%;
+  height: 40%;
+  border-radius: 0.5em;
+  margin: 200px auto;
+  border: 2px black;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.newpet-form {
+  background-color: rgba(0,0,0, 0.3);
+  width: 60%;
+  height: 40%;
+  border-radius: 0.5em;
+  margin: 200px auto;
+  border: 2px black;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.newpet-page {
+  background-image: url('./images/pellegrinodog.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+textarea {
+  color: black;
 }

@@ -35,12 +35,13 @@ class App extends React.Component {
     );
   }
 
-  submitPetHandler = (name, breed, size) => {
+  submitPetHandler = (name, breed, size, notes) => {
     console.log('submitPetHandler logged!');
     const petObj = {
       name: name,
       breed: breed,
       size: size,
+      notes: notes,
       bookings: [],
     };
     fetch('http://localhost:4000/api/v1/pets', {
@@ -146,10 +147,10 @@ class App extends React.Component {
       displayLoginModal: newState,
     });
   };
-  signupModalShow = (newState) => {
+  petsModalShow = (newState) => {
     this.setState({
       ...this.state,
-      displaySignupModal: newState,
+      displayPetsModal: newState,
     });
   };
   bookingsModalShow = (newState) => {
@@ -192,9 +193,15 @@ class App extends React.Component {
           />
         </Modal>
         <Modal
-          display={this.state.displaySignupModal}
-          closeHandler={() => this.signupModalShow(false)}
-        ></Modal>
+          display={this.state.displayPetsModal}
+          closeHandler={() => this.petsModalShow(false)}
+        >
+          {/* <PetPage
+            loggedIn={this.isLoggedIn()}
+            submitPetHandler={this.submitPetHandler}
+            petsModalShow={() => this.petsModalShow(false)}
+          /> */}
+        </Modal>
         <Modal
           display={this.state.displayBookingsModal}
           closeHandler={() => this.bookingsModalShow(false)}
