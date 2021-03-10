@@ -48,4 +48,5 @@ Also shoutout to some of my cohort mates who I've worked with and shared some gr
 - Nicholas Gacicia
 - Abe Abdulah
 - Sennad Binghalib
+- Scott Johnson
 - Jessica Hansen
