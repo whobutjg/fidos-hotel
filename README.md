@@ -1,6 +1,7 @@
 ## Fido's Hotel
 
-- A hotel booking application for your dog while you're away on your travels. Features full login Final project for GA-1207
+- A hotel booking application for your dog while you're away on your travels. Features full login & sign-up authorization using JWT.
+- Final project for GA-1207
 
 ### Technologies Used:
 
