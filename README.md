@@ -1,6 +1,6 @@
 ## Fido's Hotel
 
-- A hotel booking application for your dog while you're away on your travels. Final project for GA-1207
+- A hotel booking application for your dog while you're away on your travels. Features full login Final project for GA-1207
 
 ### Technologies Used:
 
@@ -29,4 +29,21 @@ A user simply creates an account, adds their dog and dog's information, updates 
 
 ### Shoutouts:
 
-- Instructional team of SEI-1207 Kenny Bushman, Milcah Orbacedo, Quin Sparks, & Michael Solorio. Also shoutout to some of my cohort mates who I've worked with and shared some great laughs & memories with: Mohamed Abdulah, Brittany Bui, Matt Biggers, Nicholas Gacicia, Abe Abdulah, Sennad Binghalib, & Jessica Hansen!
+- Instructional team of SEI-1207:
+
+* Kenny Bushman
+* Milcah Orbacedo
+* Quin Sparks
+* Michael Solorio
+
+---
+
+Also shoutout to some of my cohort mates who I've worked with and shared some great laughs & memories with:
+
+- Mohamed Abdulah
+- Brittany Bui
+- Matt Biggers
+- Nicholas Gacicia
+- Abe Abdulah
+- Sennad Binghalib
+- Jessica Hansen!
