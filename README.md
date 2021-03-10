@@ -31,12 +31,12 @@ A user simply creates an account, adds their dog and dog's information, updates 
 
 ### Shoutouts:
 
-- Instructional team of SEI-1207:
+Instructional team of SEI-1207:
 
-* Kenny Bushman
-* Milcah Orbacedo
-* Quin Sparks
-* Michael Solorio
+- Kenny Bushman
+- Milcah Orbacedo
+- Quin Sparks
+- Michael Solorio
 
 ---
 
