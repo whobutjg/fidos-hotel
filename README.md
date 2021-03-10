@@ -11,7 +11,7 @@
 
 ### Images:
 
-!()['./src/images/fidoshotel.png']
+![]('./src/images/fidoshotel.png')
 
 - Homepage screenshot of application
 
