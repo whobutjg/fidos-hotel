@@ -25,7 +25,8 @@ A user simply creates an account, adds their dog and dog's information, updates 
 - Image upload functionality.
 - Admin dashboard privileges and employee privileges to edit bookings on user's pets.
 - More share funcationality between social media applications.
-- Depoloyment
+- Drag & Drop for bookings on your dog(s).
+- Deployment
 
 ### Shoutouts:
 
